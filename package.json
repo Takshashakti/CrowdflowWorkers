@@ -1,7 +1,8 @@
 {
   "scripts": {
-    "dev": "wrangler dev src/index.ts",
-    "deploy": "wrangler deploy --minify src/index.ts"
+    "dev": "wrangler dev src/index.ts --local --persist --d1=DB",
+    "deploy": "wrangler deploy --minify src/index.ts",
+    "generate": "drizzle-kit generate:sqlite --schema=./db/schema.ts --out=./migrations"
   },
   "dependencies": {
     "drizzle-orm": "^0.29.1",

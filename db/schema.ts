@@ -1,7 +1,7 @@
 // import { sql } from "drizzle-orm";
 import { text, integer, sqliteTable } from "drizzle-orm/sqlite-core";
 
-const users = sqliteTable("Users", {
+export const users = sqliteTable("Users", {
   id: integer("id").primaryKey().unique(),
   name: text("name"),
   token: text("token"),
@@ -11,7 +11,7 @@ const users = sqliteTable("Users", {
   location: text("location")
 })
 
-const reports = sqliteTable("Reports", {
+export const reports = sqliteTable("Reports", {
   id: integer("id").primaryKey().unique(),
   user_id: integer("user_id").references(() => users.id),
   description: text("description"),
