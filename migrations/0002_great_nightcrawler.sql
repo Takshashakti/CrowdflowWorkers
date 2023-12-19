@@ -1,0 +1,1 @@
+ALTER TABLE Disasters ADD `radius` real;

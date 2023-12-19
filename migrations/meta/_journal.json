@@ -8,6 +8,20 @@
       "when": 1702130424639,
       "tag": "0000_big_domino",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "5",
+      "when": 1702132038096,
+      "tag": "0001_smart_molecule_man",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "5",
+      "when": 1702963322706,
+      "tag": "0002_great_nightcrawler",
+      "breakpoints": true
     }
   ]
 }

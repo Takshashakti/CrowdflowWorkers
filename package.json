@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "dev": "wrangler dev src/index.ts --local --persist --d1=DB",
+    "dev": "wrangler dev src/index.ts",
     "deploy": "wrangler deploy --minify src/index.ts",
     "generate": "drizzle-kit generate:sqlite --schema=./db/schema.ts --out=./migrations"
   },

@@ -1,6 +1,7 @@
 import { Hono } from "hono";
-import { drizzle } from "drizzle-orm/d1";
-import { users } from "../db/schema";
+import { register } from "./auth/register";
+import { getall } from "./auth/list";
+import { addReport, getallReports } from "./report";
 
 type Bindings = {
   DB: D1Database;
@@ -8,14 +9,15 @@ type Bindings = {
 
 const app = new Hono<{ Bindings: Bindings }>();
 
-app.get("/", (c) => {
-  return c.text("Hello Hono!");
-});
+app.get("/", (c) => c.text("Crowdflow API alive!!"));
 
-app.post("/user/register", async (c) => {
-  const db = drizzle(c.env.DB);
-  await db.insert(users).values({ name: "Karma" });
-  return c.text("Hello Hono!");
-})
+/* Auth endpoints */
+app.post("/user/register", register);
+// app.post("/user/login", login);
+app.get("/user/getall", getall);
+
+/* Report endpoints */
+app.post("/report/register", addReport);
+app.get("/report/getall", getallReports);
 
 export default app;
