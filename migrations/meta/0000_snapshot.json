@@ -1,7 +1,7 @@
 {
   "version": "5",
   "dialect": "sqlite",
-  "id": "4aeda67c-7da3-432a-bad8-a4f79ae7bfa5",
+  "id": "0fdfeed0-8a4a-44f4-9e7b-4a23c0c914f5",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "tables": {
     "Reports": {
@@ -42,15 +42,36 @@
           "notNull": false,
           "autoincrement": false
         },
-        "location": {
-          "name": "location",
+        "latitude": {
+          "name": "latitude",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "longitude": {
+          "name": "longitude",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "city": {
+          "name": "city",
           "type": "text",
           "primaryKey": false,
           "notNull": false,
           "autoincrement": false
         },
-        "address": {
-          "name": "address",
+        "state": {
+          "name": "state",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "district": {
+          "name": "district",
           "type": "text",
           "primaryKey": false,
           "notNull": false,
@@ -58,13 +79,6 @@
         },
         "time": {
           "name": "time",
-          "type": "integer",
-          "primaryKey": false,
-          "notNull": false,
-          "autoincrement": false
-        },
-        "disaster_id": {
-          "name": "disaster_id",
           "type": "integer",
           "primaryKey": false,
           "notNull": false,
@@ -87,19 +101,6 @@
           "tableTo": "Users",
           "columnsFrom": [
             "user_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
-          "onDelete": "no action",
-          "onUpdate": "no action"
-        },
-        "Reports_disaster_id_Disasters_id_fk": {
-          "name": "Reports_disaster_id_Disasters_id_fk",
-          "tableFrom": "Reports",
-          "tableTo": "Disasters",
-          "columnsFrom": [
-            "disaster_id"
           ],
           "columnsTo": [
             "id"
@@ -156,8 +157,15 @@
           "notNull": false,
           "autoincrement": false
         },
-        "location": {
-          "name": "location",
+        "authority": {
+          "name": "authority",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "organisation": {
+          "name": "organisation",
           "type": "text",
           "primaryKey": false,
           "notNull": false,
@@ -169,6 +177,13 @@
           "name": "Users_id_unique",
           "columns": [
             "id"
+          ],
+          "isUnique": true
+        },
+        "Users_phnNo_unique": {
+          "name": "Users_phnNo_unique",
+          "columns": [
+            "phnNo"
           ],
           "isUnique": true
         }

@@ -4,12 +4,13 @@ CREATE TABLE `Reports` (
 	`description` text,
 	`image_url` text,
 	`type` text,
-	`location` text,
-	`address` text,
+	`latitude` real,
+	`longitude` real,
+	`city` text,
+	`state` text,
+	`district` text,
 	`time` integer,
-	`disaster_id` integer,
-	FOREIGN KEY (`user_id`) REFERENCES `Users`(`id`) ON UPDATE no action ON DELETE no action,
-	FOREIGN KEY (`disaster_id`) REFERENCES `Disasters`(`id`) ON UPDATE no action ON DELETE no action
+	FOREIGN KEY (`user_id`) REFERENCES `Users`(`id`) ON UPDATE no action ON DELETE no action
 );
 --> statement-breakpoint
 CREATE TABLE `Users` (
@@ -19,8 +20,10 @@ CREATE TABLE `Users` (
 	`phnNo` text,
 	`gender` text,
 	`age` integer,
-	`location` text
+	`authority` integer,
+	`organisation` text
 );
 --> statement-breakpoint
 CREATE UNIQUE INDEX `Reports_id_unique` ON `Reports` (`id`);--> statement-breakpoint
-CREATE UNIQUE INDEX `Users_id_unique` ON `Users` (`id`);
+CREATE UNIQUE INDEX `Users_id_unique` ON `Users` (`id`);--> statement-breakpoint
+CREATE UNIQUE INDEX `Users_phnNo_unique` ON `Users` (`phnNo`);
