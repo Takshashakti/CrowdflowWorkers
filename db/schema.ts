@@ -14,6 +14,7 @@ export const users = sqliteTable("Users", {
 export const reports = sqliteTable("Reports", {
   id: integer("id").primaryKey().unique(),
   user_id: integer("user_id").references(() => users.id),
+  title: text("title"),
   description: text("description"),
   image_url: text("image_url"),
   type: text("type"),
@@ -23,14 +24,16 @@ export const reports = sqliteTable("Reports", {
   state: text("state"),
   district: text("district"),
   time: integer("time"),
-  // incidents_id: integer("incidents_id").references(() => incidents.id)
+  // upvote: integer("upvote"),
+  // downvote: integer("downvote"),
+  incidents_id: integer("incidents_id").references(() => incidents.id)
 })
 
-// export const incidents = sqliteTable("Incidents", {
-//   id: integer("id").primaryKey().unique(),
-//   avg_lat: integer("avg_lat"),
-//   avg_long: integer("avg_long"),
-//   radius: real("radius"),
-//   address: text("address"),
-//   status: text("status")
-// })
+export const incidents = sqliteTable("Incidents", {
+  id: integer("id").primaryKey().unique(),
+  city: text("city"),
+  state: text("state"),
+  district: text("district"),
+  assignedTo: integer("assignedTo").references(() => users.id),
+  status: text("status")
+})

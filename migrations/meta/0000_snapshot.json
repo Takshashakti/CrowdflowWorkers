@@ -1,9 +1,82 @@
 {
   "version": "5",
   "dialect": "sqlite",
-  "id": "0fdfeed0-8a4a-44f4-9e7b-4a23c0c914f5",
+  "id": "f9d98956-75b3-4b2f-bc91-08ebc115aa9f",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "tables": {
+    "Incidents": {
+      "name": "Incidents",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "integer",
+          "primaryKey": true,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "city": {
+          "name": "city",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "state": {
+          "name": "state",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "district": {
+          "name": "district",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "assignedTo": {
+          "name": "assignedTo",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "status": {
+          "name": "status",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        }
+      },
+      "indexes": {
+        "Incidents_id_unique": {
+          "name": "Incidents_id_unique",
+          "columns": [
+            "id"
+          ],
+          "isUnique": true
+        }
+      },
+      "foreignKeys": {
+        "Incidents_assignedTo_Users_id_fk": {
+          "name": "Incidents_assignedTo_Users_id_fk",
+          "tableFrom": "Incidents",
+          "tableTo": "Users",
+          "columnsFrom": [
+            "assignedTo"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
     "Reports": {
       "name": "Reports",
       "columns": {
@@ -17,6 +90,13 @@
         "user_id": {
           "name": "user_id",
           "type": "integer",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "title": {
+          "name": "title",
+          "type": "text",
           "primaryKey": false,
           "notNull": false,
           "autoincrement": false
@@ -83,6 +163,13 @@
           "primaryKey": false,
           "notNull": false,
           "autoincrement": false
+        },
+        "incidents_id": {
+          "name": "incidents_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
         }
       },
       "indexes": {
@@ -101,6 +188,19 @@
           "tableTo": "Users",
           "columnsFrom": [
             "user_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "Reports_incidents_id_Incidents_id_fk": {
+          "name": "Reports_incidents_id_Incidents_id_fk",
+          "tableFrom": "Reports",
+          "tableTo": "Incidents",
+          "columnsFrom": [
+            "incidents_id"
           ],
           "columnsTo": [
             "id"
